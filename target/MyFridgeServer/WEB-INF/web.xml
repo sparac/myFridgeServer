@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<display-name>MyFridge</display-name>
+
+	<listener>
+		<display-name>Application initializer</display-name>
+		<listener-class>hr.fer.ztel.myFridge.ApplicationInitializer</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>notification.task.interval</param-name>
+		<param-value>15000</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>MyFridgeResources</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>hr.fer.ztel.myFridge.servlets</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MyFridgeResources</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>RestAuthenticationFilter</filter-name>
+		<filter-class>hr.fer.ztel.myFridge.security.RestAuthenticationFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>RestAuthenticationFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

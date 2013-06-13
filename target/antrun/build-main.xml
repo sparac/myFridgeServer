@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <echo message="Deploying WAR to container @ D:\jetty-distribution-9.0.1.v20130408\webapps"/>
+  <copy todir="D:\jetty-distribution-9.0.1.v20130408\webapps" verbose="true" overwrite="true" failonerror="true" force="true">
+    <filelist id="warFiles" dir="D:\Suncana\eclipse_workspace\my-fridge-server\target">
+      <file name="MyFridgeServer.war"/>
+    </filelist>
+  </copy>
+</target>
+</project>
